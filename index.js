@@ -105,7 +105,7 @@ const checkAppleCollision = function () {
 const drawScore = function () {
   ctx.fillStyle = 'white';
   ctx.font = '12px Verdana';
-  ctx.fillText(`Score ${score}`, canvas.width - 50, 20);
+  ctx.fillText(`Score ${score}`, canvas.width - 60, 20);
 };
 
 const isGameOver = function () {
