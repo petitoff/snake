@@ -1,5 +1,5 @@
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d"); // context
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d'); // context
 
 class SnakePart {
   constructor(x, y) {
@@ -16,6 +16,7 @@ let headX = 10;
 let headY = 10;
 const snakeParts = [];
 let tailLength = 2;
+let snakeColor = 'green';
 
 let xVelocity = 0;
 let yVelocity = 0;
@@ -26,12 +27,12 @@ let appleY = 5;
 let score = 0;
 
 function clearScreen() {
-  ctx.fillStyle = "black";
+  ctx.fillStyle = 'black';
   ctx.fillRect(0, 1, canvas.width, canvas.height);
 }
 
 function drawSnake() {
-  ctx.fillStyle = "green";
+  ctx.fillStyle = snakeColor;
   for (let i = 0; i < snakeParts.length; i++) {
     let part = snakeParts[i];
     ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
@@ -40,7 +41,7 @@ function drawSnake() {
   snakeParts.push(new SnakePart(headX, headY));
   if (snakeParts.length > tailLength) snakeParts.shift();
 
-  ctx.fillStyle = "orange";
+  ctx.fillStyle = 'orange';
   ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
 
@@ -73,10 +74,16 @@ const keyDown = function (event) {
   }
 };
 
-document.body.addEventListener("keydown", keyDown);
+document.body.addEventListener('keydown', keyDown);
+
+const btn1 = document.querySelector('.btn-1');
+
+btn1.addEventListener('click', function () {
+  snakeColor = 'purple';
+});
 
 const drawApple = function () {
-  ctx.fillStyle = "red";
+  ctx.fillStyle = 'red';
   ctx.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
 };
 
@@ -90,8 +97,8 @@ const checkAppleCollision = function () {
 };
 
 const drawScore = function () {
-  ctx.fillStyle = "white";
-  ctx.font = "12px Verdana";
+  ctx.fillStyle = 'white';
+  ctx.font = '12px Verdana';
   ctx.fillText(`Score ${score}`, canvas.width - 50, 20);
 };
 
@@ -114,9 +121,9 @@ const isGameOver = function () {
   }
 
   if (gameOver) {
-    ctx.fillStyle = "white";
-    ctx.font = "50px Verdana";
-    ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
+    ctx.fillStyle = 'white';
+    ctx.font = '50px Verdana';
+    ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2);
   }
 
   return gameOver;
