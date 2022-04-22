@@ -17,6 +17,7 @@ let headY = 10;
 const snakeParts = [];
 let tailLength = 2;
 let snakeColor = 'green';
+let changingPositionOfSnake = false;
 
 let xVelocity = 0;
 let yVelocity = 0;
@@ -48,9 +49,11 @@ function drawSnake() {
 const changeSnakePosition = function () {
   headX += xVelocity;
   headY += yVelocity;
+  changingPositionOfSnake = false;
 };
 
 const keyDown = function (event) {
+  if (changingPositionOfSnake) return;
   if (event.keyCode === 38 || event.keyCode === 87) {
     if (yVelocity == 1) return;
     // up
@@ -72,6 +75,7 @@ const keyDown = function (event) {
     yVelocity = 0;
     xVelocity = 1;
   }
+  changingPositionOfSnake = true;
 };
 
 document.body.addEventListener('keydown', keyDown);
