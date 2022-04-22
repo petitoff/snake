@@ -53,6 +53,8 @@ const changeSnakePosition = function () {
 };
 
 const keyDown = function (event) {
+  if (event.keyCode === 32) location.reload(); // if space
+
   if (changingPositionOfSnake) return;
   if (event.keyCode === 38 || event.keyCode === 87) {
     if (yVelocity == 1) return;
