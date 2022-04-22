@@ -135,7 +135,7 @@ function drawGame() {
 
   drawScore();
 
-  setTimeout(drawGame, 1000 / speed);
+  setTimeout(drawGame, 800 / speed);
 }
 
 drawGame();
